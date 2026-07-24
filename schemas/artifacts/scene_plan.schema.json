@@ -54,6 +54,18 @@
             "type": "string",
             "description": "WHY this shot exists — what purpose it serves in the video"
           },
+          "five_aspect": {
+            "type": "object",
+            "description": "The 5-aspect scene-plan checklist mandated by the scene-director skills. Free-text, because the load shifts by animation_mode: cinematic and AI-video scenes specify all five, while Manim and pure motion-graphics scenes legitimately mark Camera and Subject Motion as N/A. Marking an aspect 'N/A' is allowed, but it must be explicit — silent omission is forbidden. This is the prose companion to shot_language, which is a closed cinematography enum and cannot express N/A or non-camera framing.",
+            "properties": {
+              "subject": { "type": "string", "description": "Type + key visual attributes. For Manim, the equation/object/graph foregrounded; for anime_scene, the character or environment in focus." },
+              "subject_motion": { "type": "string", "description": "For Manim, the order of Create/Transform/FadeIn and what each conveys; for AI-video, actions and interactions in temporal order." },
+              "scene": { "type": "string", "description": "POV + setting + time of day + scene dynamics. Overlays are NOT described here — they belong in overlay_notes." },
+              "spatial_framing": { "type": "string", "description": "Shot size + position-in-frame + depth (FG/MG/BG) + camera height, and how those change." },
+              "camera": { "type": "string", "description": "Playback speed, lens, height, angle, focus/DoF, steadiness, movement. Mark 'N/A' explicitly for Manim and pure motion-graphics scenes with no virtual camera move." }
+            },
+            "additionalProperties": false
+          },
           "narrative_role": {
             "type": "string",
             "enum": ["establish_context", "introduce_subject", "build_tension", "deliver_payload", "transition", "emotional_beat", "evidence", "comparison", "resolution", "call_to_action"],

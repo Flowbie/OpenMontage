@@ -196,6 +196,10 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "Which data_points or audience_insights support this angle?"
+          },
+          "animation_fit": {
+            "type": "string",
+            "description": "Which animation mode(s) best serve this angle, and why — must reference the technique research. Required by skills/pipelines/animation/research-director.md (Step 8) for the animation pipeline; optional for pipelines whose research stage has no animation-mode dimension."
           }
         },
         "additionalProperties": false
@@ -227,7 +231,8 @@
           "used_for": { "type": "string", "description": "Which section of the brief this source supports" },
           "reliability": {
             "type": "string",
-            "enum": ["primary", "secondary", "anecdotal"]
+            "enum": ["primary_source", "secondary_source", "anecdotal", "primary", "secondary"],
+            "description": "Source reliability. CANONICAL values are primary_source / secondary_source / anecdotal — matching data_points[].credibility and the wording in research-director.md. The bare 'primary' / 'secondary' forms are accepted aliases retained for backward compatibility with briefs written against the older enum; prefer the canonical form in new work."
           }
         },
         "additionalProperties": false
